@@ -25,7 +25,7 @@ alias grun='java org.antlr.v4.gui.TestRig'
 antlr4 -Dlanguage=Cpp myGrammar.g4 -visitor   
 
 Компиляция программы  
-g++ main.cpp -o main -lantlr4-runtime DoWhileLoopLexer.cpp DoWhileLoopParser.cpp  
+g++ main.cpp -o main -lantlr4-runtime myGrammarLexer.cpp myGrammarParser.cpp 
 
 Запуск примера  
 ./main  
