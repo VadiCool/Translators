@@ -58,11 +58,9 @@ antlrcpp::Any visitBool_var(myGrammarParser::Bool_varContext *ctx) override {
          std::vector<std::string> vecName;
          for (auto x : vecNameOld) {
                vecName.push_back(x->getText());
-               std::cout << x->getText() << std::endl;
          }
 
          std::string value = std::any_cast<std::string>(visit(ctx->bool_expr()));
-         std::cout << value << std::endl;
 
          for (auto name : vecName) {
                variables[name] = value;
@@ -76,12 +74,10 @@ antlrcpp::Any visitInt_var(myGrammarParser::Int_varContext *ctx) override {
 
     std::vector<std::string> vecName;
 	for (auto x : vecNameOld) {
-        vecName.push_back(x->getText());
-		std::cout << x->getText() << std::endl;
+        	vecName.push_back(x->getText());
 	}
 	  
     std::string value = std::any_cast<std::string>(visit(ctx->int_expr()));
-    std::cout << value << std::endl;
 
     for (auto name : vecName) {
 	    variables[name] = value;
@@ -96,10 +92,6 @@ antlrcpp::Any visitInt_expr(myGrammarParser::Int_exprContext *ctx) override {
 	if (ctx->int_expr_tail()) {
 		antlrcpp::Any tempAny = visit(ctx->int_expr_tail());
 		std::vector<std::string> temp = std::any_cast<std::vector<std::string>>(tempAny);
-
-		for (auto x : temp) {
-			std::cout << "New Val:" << x << std::endl;
-		}
 
 		for (int i = 0; i < temp.size(); i+=2) {
 			if (isNumber(temp[i + 1])) {
